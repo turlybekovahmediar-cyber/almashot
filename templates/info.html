@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Место — SHOOT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="{{url_for('static', filename='main.css')}}" rel="stylesheet" />
+  <link href="{{url_for('static', filename='profile.css')}}" rel="stylesheet"/>
+</head>
+<body data-page="info">
+  <header class="topbar">
+  <a class="logo" href="{{url_for('index')}}"><img src="{{url_for('static', filename='img/logo.png')}}" alt="SHOOT" /></a>
+
+  <nav class="nav">
+    <a class="nav__link" href="{{url_for('index')}}">Главная</a>
+    <a class="nav__link" href="{{url_for('favorites')}}">Избранное</a>
+    <a class="nav__link" href="{{url_for('history')}}">История</a>
+  </nav>
+
+  <div class="auth">
+    <!-- показываем, если профиля нет -->
+    <a class="btn btn--outline" id="loginBtn" href="{{url_for('login')}}">Войти</a>
+
+    <!-- показываем, если профиль есть -->
+    <button class="userchip userchip--icon" id="userChip" hidden aria-haspopup="true" aria-expanded="false">
+      <span class="userchip__avatar" id="chipAvatar" aria-hidden="true">U</span>
+      <span class="userchip__caret">▾</span>
+    </button>
+
+    <!-- поповер-«карточка» -->
+    <div class="account-popover" id="accountPopover" hidden>
+      <div class="acc-row acc-main">
+        <span class="acc-avatar" id="popAvatar">U</span>
+        <div class="acc-id">
+          <div class="acc-name" id="popName">User</div>
+          <div class="acc-email" id="popEmail">yourname@gmail.com</div>
+        </div>
+        <span class="acc-check">✓</span>
+      </div>
+      <div class="acc-divider"></div>
+      <a class="acc-item" href="{{url_for('profile')}}">Профиль</a>
+      <button class="acc-item acc-danger" id="logoutBtn" type="button">Выйти</button>
+    </div>
+  </div>
+</header>
+
+
+
+  <main class="container">
+    <a class="btn btn--light" id="backBtn">← Назад</a>
+
+    <!-- КАРУСЕЛЬ ФОТО МЕСТА -->
+    <div class="carousel place-carousel" id="placeCarousel">
+      <button class="carousel__arrow prev" aria-label="Назад">‹</button>
+      <div class="carousel__track"></div>
+      <button class="carousel__arrow next" aria-label="Вперёд">›</button>
+      <div class="carousel__dots"></div>
+    </div>
+
+    <div class="place-head">
+      <div>
+        <h1 id="placeName"></h1>
+        <div class="rating" id="ratingStars" aria-label="Оценка"></div>
+        <div class="muted"><span id="ratingValue">0.0</span> · <span id="ratingCount">0</span> оценок</div>
+      </div>
+      <button id="favToggle" class="heart" aria-label="В избранное"></button>
+    </div>
+
+    <div class="place-meta">
+      <div><img src="{{url_for('static', filename='img/иконкалокации.png')}}" alt=""> <span id="placeAddress"></span></div>
+      <div><img src="{{url_for('static', filename='img/часы.png')}}" alt=""> <span id="placeHours"></span></div>
+      <div><img src="{{url_for('static', filename='img/ватсап.png')}}" alt=""> <span id="placePhone"></span></div>
+      <div class="socials small">
+        <img src="{{url_for('static', filename='img/инста.png')}}" alt="Instagram"/>
+        <img src="{{url_for('static', filename='img/телега.png')}}" alt="Telegram"/>
+      </div>
+    </div>
+
+    <h2>Похожие</h2>
+    <div id="similarInfoGrid" class="cards"></div>
+
+    <section class="comments">
+      <h2>Отзывы</h2>
+      <form id="commentForm" class="comment-form">
+        <label>Ваша оценка:</label>
+        <div class="rating rating--input" id="inputStars"></div>
+        <textarea id="commentText" rows="3" placeholder="Оставьте комментарий..."></textarea>
+        <button class="btn" type="submit">Добавить отзыв</button>
+      </form>
+      <div id="commentsList" class="comments__list"></div>
+    </section>
+  </main>
+
+<!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <div class="logo"><img src="{{url_for('static', filename='img/logo.png')}}" alt="SHOOT"></div>
+      <p class="footer__text">Лучшие идеи для отдыха, развлечении и вдохновения каждый день</p>
+      <div class="socials">
+        <a href="#"><img src="{{url_for('static', filename='img/инста.png')}}" alt="Instagram"></a>
+        <a href="#"><img src="{{url_for('static', filename='img/ватсап.png')}}" alt="WhatsApp"></a>
+        <a href="#"><img src="{{url_for('static', filename='img/телега.png')}}" alt="Telegram"></a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer__title">Навигация</div>
+      <nav class="links">
+        <a href="{{url_for('index')}}">Главная</a>
+        <a href="{{url_for('favorites')}}">Избранное</a>
+        <a href="{{url_for('profile')}}">Профиль</a>
+      </nav>
+    </div>
+
+    <div>
+      <div class="footer__title">О проекте</div>
+      <nav class="links">
+        <a href="{{url_for('faq')}}">FAQ</a>
+      </nav>
+    </div>
+  </footer>
+<script>
+  const user = {{ (current_user.to_dict() if current_user.is_authenticated else None) | tojson | safe }};
+</script>
+
+ <script src="{{url_for('static', filename='profile.js')}}"></script>
+ <script src="{{url_for('static', filename='script.js')}}"></script>
+</body>
+</html>
+

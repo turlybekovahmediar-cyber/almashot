@@ -1,0 +1,265 @@
+/* ===== БАЗА и ПЕРЕМЕННЫЕ ===== */
+:root{
+  --brand:#a62020;
+  --text:#222;
+  --muted:#6f6f6f;
+  --bg:#f6f0ea;
+  --card:#ffffff;
+  --border:#e6ded7;
+  --shadow:0 4px 18px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font:16px/1.45 "Inter", system-ui, -apple-system, Arial, sans-serif;
+  color:var(--text);
+  background:#fff;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ===== TOPBAR (верхняя панель) ===== */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  padding:14px 24px;
+  border-bottom:1px solid var(--border);
+  background:#fff;
+}
+.topbar .logo img{height:28px}
+
+/* ===== КНОПКИ ===== */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:10px 16px;
+  border-radius:12px;
+  border:1px solid transparent;
+  font-weight:600;
+  white-space:nowrap;
+  cursor:pointer;
+}
+.btn--primary{
+  background:var(--brand);
+  color:#fff;
+  box-shadow:var(--shadow);
+}
+.btn--primary:hover{filter:brightness(.96)}
+.btn--light{
+  background:#f4f2f0;
+  border:1px solid var(--border);
+  color:#222;
+}
+.btn--light img{height:18px;width:18px}
+
+/* ===== ТЕКСТ-УТОЧНЕНИЯ ===== */
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+
+/* ===== КАРТОЧКА АВТОРИЗАЦИИ ===== */
+.auth-card-wrap{
+  display:grid;
+  place-items:center;
+  min-height:64vh;          /* центрируем карточку выше футера */
+  background:var(--bg);
+  padding:40px 16px;
+}
+.auth-card{
+  width:100%;
+  max-width:420px;          /* ширина как на макете */
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  padding:22px;
+  display:grid;
+  gap:12px;
+}
+
+/* Заголовок */
+.auth-card h2{
+  margin:4px 0 2px;
+  font-size:24px;
+  line-height:1.2;
+}
+
+/* Вкладки Войти/Регистрация */
+.tabs{
+  display:flex;
+  gap:6px;
+  background:#f3f3f3;
+  padding:6px;
+  border-radius:999px;
+  margin-bottom:4px;
+}
+.tab{
+  flex:1;
+  text-align:center;
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:600;
+  color:#5b3a2f;           /* тёплый тёмный */
+  background:transparent;
+}
+.tab.is-active{
+  background:var(--brand);
+  color:#fff;
+}
+
+/* Поля формы — на всю ширину, вертикально */
+.auth-card label{
+  display:grid;
+  gap:6px;
+  font-weight:600;
+}
+.auth-card input{
+  width:100%;
+  height:44px;
+  padding:0 12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  font:inherit;
+  background:#fff;
+}
+.auth-card input::placeholder{color:#9a9a9a}
+.auth-card input:focus{
+  outline:none;
+  border-color:#d1b9b4;
+  box-shadow:0 0 0 3px rgba(166,32,32,.12);
+}
+
+/* строка со ссылкой "Забыли пароль?" */
+.auth-card a.muted.small{justify-self:start}
+
+/* Кнопка отправки — на всю ширину */
+.auth-card .btn[type="submit"],
+.auth-card button[type="submit"]{
+  width:100%;
+  height:46px;
+  border-radius:12px;
+}
+
+/* Кнопки OAuth — в строку, одинаковой ширины */
+.oauth{
+  display:flex;
+  gap:10px;
+  margin-top:2px;
+}
+.oauth .btn{
+  flex:1;
+  height:44px;
+  border-radius:12px;
+}
+
+/* ===== ФУТЕР (как в макете) ===== */
+.footer{
+  margin-top:40px;
+  padding:36px 20px;
+  background:var(--bg);
+  border-top:1px solid var(--border);
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:40px;
+  align-items:start;
+}
+.footer .logo img{height:48px}
+.footer__text{margin-top:12px;color:var(--muted);line-height:1.5;max-width:320px}
+.footer .socials{display:flex;gap:12px;margin-top:14px}
+.footer .socials img{height:24px;opacity:.9;transition:opacity .2s}
+.footer .socials img:hover{opacity:1}
+.footer__title{font-weight:700;margin:4px 0 12px}
+.footer .links{display:grid;gap:10px}
+.footer .links a{opacity:.85}
+.footer .links a:hover{opacity:1;text-decoration:underline}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 900px){
+  .footer{grid-template-columns:1fr 1fr;gap:28px}
+}
+@media (max-width: 560px){
+  .footer{grid-template-columns:1fr;gap:22px}
+  .topbar{padding:12px 16px}
+  .topbar .logo img{height:24px}
+}
+/* ======= FOOTER ======= */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #f6f0ea;
+  padding: 40px 60px;
+  flex-wrap: wrap;
+  border-top: 1px solid #e8e1db;
+}
+
+.footer > div {
+  flex: 1;
+  min-width: 250px;
+  margin: 10px 20px;
+}
+
+.footer .logo img {
+  height: 50px;
+  margin-bottom: 12px;
+}
+
+.footer__text {
+  color: #555;
+  margin-bottom: 20px;
+  max-width: 260px;
+  line-height: 1.5;
+}
+
+.socials {
+  display: flex;
+  gap: 16px;
+}
+
+.socials img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.2s ease;
+}
+
+.socials img:hover {
+  transform: scale(1.1);
+}
+
+.footer__title {
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.links a {
+  color: #444;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.links a:hover {
+  color: #a62020;
+}
+
+@media (max-width: 800px) {
+  .footer {
+    flex-direction: column;
+    text-align: left;
+    padding: 30px 20px;
+  }
+  .footer > div {
+    margin-bottom: 30px;
+  }
+}

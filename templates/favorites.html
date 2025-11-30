@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Избранное — SHOOT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="{{url_for('static', filename='main.css')}}" rel="stylesheet" />
+  <link href="{{url_for('static', filename='profile.css')}}" rel="stylesheet"/>
+</head>
+<body data-page="favorites">
+  
+
+  <header class="topbar">
+  <a class="logo" href="{{url_for('index')}}"><img src="{{url_for('static', filename='img/logo.png')}}" alt="SHOOT" /></a>
+
+  <nav class="nav">
+    <a class="nav__link" href="{{url_for('index')}}">Главная</a>
+    <a class="nav__link" href="{{url_for('favorites')}}">Избранное</a>
+    <a class="nav__link" href="{{url_for('history')}}">История</a>
+  </nav>
+
+  <div class="auth">
+    <!-- показываем, если профиля нет -->
+    <a class="btn btn--outline" id="loginBtn" href="{{url_for('login')}}">Войти</a>
+
+    <!-- показываем, если профиль есть -->
+    <button class="userchip userchip--icon" id="userChip" hidden aria-haspopup="true" aria-expanded="false">
+      <span class="userchip__avatar" id="chipAvatar" aria-hidden="true">U</span>
+      <span class="userchip__caret">▾</span>
+    </button>
+
+    <!-- поповер-«карточка» -->
+    <div class="account-popover" id="accountPopover" hidden>
+      <div class="acc-row acc-main">
+        <span class="acc-avatar" id="popAvatar">U</span>
+        <div class="acc-id">
+          <div class="acc-name" id="popName">User</div>
+          <div class="acc-email" id="popEmail">yourname@gmail.com</div>
+        </div>
+        <span class="acc-check">✓</span>
+      </div>
+      <div class="acc-divider"></div>
+      <a class="acc-item" href="{{url_for('profile')}}">Профиль</a>
+      <button class="acc-item acc-danger" id="logoutBtn" type="button">Выйти</button>
+    </div>
+  </div>
+</header>
+
+
+
+  <main class="container">
+    <div class="row-between">
+      <h1>Избранное</h1>
+      <button id="clearFavorites" class="btn btn--danger">Очистить</button>
+    </div>
+    <div id="favGrid" class="cards"></div>
+    <h2>Похожие</h2>
+    <div id="similarGrid" class="cards"></div>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <div class="logo"><img src="{{url_for('static', filename='img/logo.png')}}" alt="SHOOT"></div>
+      <p class="footer__text">Лучшие идеи для отдыха, развлечении и вдохновения каждый день</p>
+      <div class="socials">
+        <a href="#"><img src="{{url_for('static', filename='img/инста.png')}}" alt="Instagram"></a>
+        <a href="#"><img src="{{url_for('static', filename='img/ватсап.png')}}" alt="WhatsApp"></a>
+        <a href="#"><img src="{{url_for('static', filename='img/телега.png')}}" alt="Telegram"></a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer__title">Навигация</div>
+      <nav class="links">
+        <a href="{{url_for('index')}}">Главная</a>
+        <a href="{{url_for('favorites')}}">Избранное</a>
+        <a href="{{url_for('profile')}}">Профиль</a>
+      </nav>
+    </div>
+
+    <div>
+      <div class="footer__title">О проекте</div>
+      <nav class="links">
+        <a href="{{url_for('faq')}}">FAQ</a>
+      </nav>
+    </div>
+  </footer>
+  <script>
+  const user = {{ (current_user.to_dict() if current_user.is_authenticated else None) | tojson | safe }};
+</script>
+
+ <script src="{{url_for('static', filename='profile.js')}}"> </script>
+  <script src="{{url_for('static', filename='script.js')}}"></script>
+</body>
+</html>
+

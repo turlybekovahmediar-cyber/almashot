@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SHOOT — FAQ</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}" />
+  <link rel="stylesheet" href="{{url_for('static', filename='profile.css')}}"/>
+  <style>
+    .logo img {
+      width: 110px; /* 🔹 уменьшен логотип */
+      height: auto;
+    }
+
+    .faq-wrap { padding: 40px 0 60px; }
+    .faq-list { max-width: 880px; margin: 0 auto; display: grid; gap: 12px; }
+
+    .faq-item {
+      background: #fff;
+      border: 1px solid #e8e0da;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      padding: 16px 20px;
+      background: #fff;
+      border: 0;
+      font-weight: 700;
+      font-size: 17px;
+      color: #2e1d14;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .faq-q .ico {
+      color: #b83a2d;
+      font-size: 18px;
+      transition: transform 0.2s;
+    }
+
+    .faq-item[open] .faq-q .ico {
+      transform: rotate(90deg);
+    }
+
+    .faq-a {
+      padding: 0 20px 20px 50px;
+      color: #4b403a;
+      line-height: 1.6;
+      font-size: 16px;
+      background: #fffaf7;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 26px;
+      color: #2e1d14;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+<header class="topbar">
+  <a class="logo" href="{{url_for('index')}}">
+    <img src="{{url_for('static', filename='img/logo.png')}}" alt="SHOOT">
+  </a>
+
+  <nav class="nav">
+    <a class="nav__link" href="{{url_for('index')}}">Главная</a>
+    <a class="nav__link" href="{{url_for('favorites')}}">Избранное</a>
+    <a class="nav__link" href="{{url_for('history')}}">История</a>
+    <a class="nav__link" href="{{url_for('faq')}}">FAQ</a>
+  </nav>
+
+  <div class="auth">
+    <a class="btn btn--outline" href="{{url_for('login')}}">Войти</a>
+  </div>
+</header>
+
+
+
+
+  <!-- FAQ -->
+  <main class="container faq-wrap">
+    <h1>FAQ</h1>
+    <section class="faq-list" id="faq">
+
+      <details class="faq-item" open>
+        <summary class="faq-q">
+          <span class="ico">▶</span> Что такое SHOOT?
+        </summary>
+        <div class="faq-a">
+          <p><b>SHOOT</b> — это онлайн-платформа, где собрана информация о локациях для съёмок. Мы помогаем фотографам, видеографам, режиссёрам и контент-мейкерам найти подходящее место для съёмки — от кофеен и студий до улиц и природных зон.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="ico">▶</span> Можно ли бронировать локацию через ваш сайт?
+        </summary>
+        <div class="faq-a">
+          <p>Нет, мы не занимаемся бронированием. <b>SHOOT</b> предоставляет только информацию — где можно снимать, нужно ли согласование, адрес, контакты и отзывы.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="ico">▶</span> Что делать, если я заметил(а) ошибку в информации?
+        </summary>
+        <div class="faq-a">
+          <p>Вы можете сообщить об этом через кнопку <b>«Сообщить об ошибке»</b> на странице локации. Мы проверим данные и обновим их.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="ico">▶</span> SHOOT работает только в Алматы?
+        </summary>
+        <div class="faq-a">
+          <p>Пока да, но мы планируем расширяться и добавлять локации из других городов Казахстана.</p>
+        </div>
+      </details>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+  <div>
+    <div class="logo"><img src="{{url_for('static', filename='img/logo.png')}}" alt="SHOOT"></div>
+    <p class="footer__text">Лучшие идеи для отдыха, развлечении и вдохновения каждый день</p>
+    <div class="socials">
+      <a href="#"><img src="{{url_for('static', filename='img/инста.png')}}" alt=""></a>
+      <a href="#"><img src="{{url_for('static', filename='img/ватсап.png')}}" alt=""></a>
+      <a href="#"><img src="{{url_for('static', filename='img/телега.png')}}" alt=""></a>
+    </div>
+  </div>
+
+  <div>
+    <div class="footer__title">Навигация</div>
+    <nav class="links">
+      <a href="{{url_for('index')}}">Главная</a>
+      <a href="{{url_for('favorites')}}">Избранное</a>
+      <a href="{{url_for('profile')}}">Профиль</a>
+    </nav>
+  </div>
+
+  <div>
+    <div class="footer__title">О проекте</div>
+    <nav class="links">
+      <a href="{{url_for('faq')}}">FAQ</a>
+    </nav>
+  </div>
+</footer>
+
+
+  <script>
+    // Аккордеон — открывается один вопрос за раз
+    const faq = document.getElementById('faq');
+    faq?.addEventListener('click', (e) => {
+      const sum = e.target.closest('summary');
+      if (!sum) return;
+      const cur = sum.parentElement;
+      [...faq.querySelectorAll('details')].forEach(d => {
+        if (d !== cur) d.removeAttribute('open');
+      });
+    });
+  </script>
+</body>
+</html>

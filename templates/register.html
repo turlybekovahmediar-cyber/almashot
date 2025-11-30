@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <title>Регистрация — SHOOT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link href="{{url_for('static', filename='logo.css')}}" rel="stylesheet"/>
+  <link href="{{url_for('static', filename='profile.css')}}" rel="stylesheet"/>
+</head>
+<body data-page="signup">
+  <header class="topbar">
+  <a class="logo" href="{{url_for('index')}}">
+    <img src="{{url_for('static', filename='img/logo.png')}}" alt="SHOOT">
+  </a>
+
+  <nav class="nav">
+    <a class="nav__link" href="{{url_for('index')}}">Главная</a>
+    <a class="nav__link" href="{{url_for('favorites')}}">Избранное</a>
+    <a class="nav__link" href="{{url_for('history')}}">История</a>
+  </nav>
+
+  <div class="auth">
+    <a class="btn btn--outline" href="{{url_for('login')}}">Войти</a>
+  </div>
+</header>
+
+
+  <main class="auth-card-wrap">
+    <form class="auth-card"  method="post" action="{{url_for('register')}}">
+      <div class="tabs">
+        <a class="tab" href="{{url_for('login')}}">Войти</a>
+        <a class="tab is-active" href="{{url_for('register')}}">Регистрация</a>
+      </div>
+      <h2>Добро пожаловать!</h2>
+      {{form.hidden_tag()}}
+      <label>Имя {{form.username}}</label>
+      <label>Email {{form.email}} </label>
+      <label>Пароль {{form.password}} </label>
+      <button class="btn btn--primary" type="submit">Зарегистрироваться</button>
+      <div class="oauth">
+        <button type="button" class="btn btn--light"><img src="{{url_for('static', filename='img/logos_facebook.png')}}" alt="fb"/> Facebook</button>
+        <button type="button" class="btn btn--light"><img src="{{url_for('static', filename='img/google.png')}}" alt="google"/> Google</button>
+      </div>
+    </form>
+  </main>
+
+
+
+
+
+
+
+  <footer class="footer">
+  <div>
+    <div class="logo"><img src="{{url_for('static', filename='img/logo.png')}}" alt="SHOOT"></div>
+    <p class="footer__text">Лучшие идеи для отдыха, развлечении и вдохновения каждый день</p>
+    <div class="socials">
+      <a href="#"><img src="{{url_for('static', filename='img/инста.png')}}" alt=""></a>
+      <a href="#"><img src="{{url_for('static', filename='img/ватсап.png')}}" alt=""></a>
+      <a href="#"><img src="{{url_for('static', filename='img/телега.png')}}" alt=""></a>
+    </div>
+  </div>
+
+  <div>
+    <div class="footer__title">Навигация</div>
+    <nav class="links">
+      <a href="{{url_for('index')}}">Главная</a>
+      <a href="{{url_for('favorites')}}">Избранное</a>
+      <a href="{{url_for('profile')}}">Профиль</a>
+    </nav>
+  </div>
+
+  <div>
+    <div class="footer__title">О проекте</div>
+    <nav class="links">
+      <a href="{{url_for('faq')}}">FAQ</a>
+    </nav>
+  </div>
+</footer>
+<script>
+  const user = {{ (current_user.to_dict() if current_user.is_authenticated else None) | tojson | safe }};
+</script>
+
+<script src="{{url_for('static', filename='profile.js')}}"></script>
+  <script src="{{url_for('static', filename='script.js')}}"></script>
+
+
+ 
+
+</body>
+</html>

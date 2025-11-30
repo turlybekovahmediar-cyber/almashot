@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>SHOOT — Главная</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="{{url_for('static', filename='main.css')}}" rel="stylesheet" />
+  <link href="{{url_for('static', filename='profile.css')}}" rel="stylesheet"/>
+</head>
+<body data-page="home">
+ 
+  <header class="topbar">
+  <a class="logo" href="{{url_for('index')}}"><img src="{{url_for('static', filename='img/logo.png')}}" alt="SHOOT" /></a>
+
+  <nav class="nav">
+    <a class="nav__link" href="{{url_for('index')}}">Главная</a>
+    <a class="nav__link" href="{{url_for('favorites')}}">Избранное</a>
+    <a class="nav__link" href="{{url_for('history')}}">История</a>
+  </nav>
+
+  <div class="auth">
+    <!-- показываем, если профиля нет -->
+    <a class="btn btn--outline" id="loginBtn" href="{{url_for('login')}}">Войти</a>
+
+    <!-- показываем, если профиль есть -->
+    <button class="userchip userchip--icon" id="userChip" hidden aria-haspopup="true" aria-expanded="false">
+      <span class="userchip__avatar" id="chipAvatar" aria-hidden="true">U</span>
+      <span class="userchip__caret">▾</span>
+    </button>
+
+    <!-- поповер-«карточка» -->
+    <div class="account-popover" id="accountPopover" hidden>
+      <div class="acc-row acc-main">
+        <span class="acc-avatar" id="popAvatar">U</span>
+        <div class="acc-id">
+          <div class="acc-name" id="popName">User</div>
+          <div class="acc-email" id="popEmail">yourname@gmail.com</div>
+        </div>
+        <span class="acc-check">✓</span>
+      </div>
+      <div class="acc-divider"></div>
+      <a class="acc-item" href="{{url_for('profile')}}">Профиль</a>
+      <button class="acc-item acc-danger" id="logoutBtn" type="button">Выйти</button>
+    </div>
+  </div>
+</header>
+
+
+
+
+
+  <section class="searchbar">
+    <div class="searchbar__input">
+      <img src="{{url_for('static', filename='img/поиск.png')}}" alt="" />
+      <input id="searchInput" type="text" placeholder="Поиск" list="suggestions" autocomplete="off"/>
+      <datalist id="suggestions"></datalist>
+    </div>
+
+    <div class="filters">
+      <button id="filterBtn" class="btn btn--light filter-trigger">
+        <img src="{{url_for('static', filename='img/фильтр.png')}}" alt="" /> Фильтр
+      </button>
+    </div>
+  </section>
+
+  <!-- Широкая панель фильтра под поиском (опции — динамически) -->
+  <section id="filterPanelWide" class="filter-wide" hidden>
+    <div class="filter-wide__inner">
+      <div id="filterOptions" class="filter-options"></div>
+      <button id="applyFiltersWide" class="btn">Применить</button>
+    </div>
+  </section>
+
+  <section class="hero">
+    <div class="carousel" id="heroCarousel" aria-label="New Aesthetic Place">
+      <button class="carousel__arrow prev" data-dir="-1" aria-label="Назад">‹</button>
+      <div class="carousel__track"></div>
+      <button class="carousel__arrow next" data-dir="1" aria-label="Вперёд">›</button>
+      <div class="carousel__dots" id="heroDots"></div>
+    </div>
+  </section>
+
+  <main class="container">
+    <h2>Подборки</h2>
+    <div class="collections">
+      <a class="collection" href="{{url_for('place')}}#В городе">
+        <img src="{{url_for('static', filename='img/в городе.png')}}" alt="В городе"/>
+        <span>В городе</span>
+      </a>
+    <a class="collection" href="{{url_for('place')}}#Природные локации">
+        <img src="{{url_for('static', filename='img/природные локации.png')}}" alt="Природные локации"/>
+        <span>Природные локации</span>
+      </a>
+      <a class="collection" href="{{url_for('place')}}#Кафешки">
+        <img src="{{url_for('static', filename='img/кафе.png')}}" alt="Кафешки"/>
+        <span>Кафешки</span>
+      </a>
+    </div>
+
+    <h2>Недавно просмотрено</h2>
+    <div id="recentGrid" class="cards"></div>
+  </main>
+<!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <div class="logo"><img src="{{url_for('static', filename='img/logo.png')}}" alt="SHOOT"></div>
+      <p class="footer__text">Лучшие идеи для отдыха, развлечении и вдохновения каждый день</p>
+      <div class="socials">
+        <a href="#"><img src="{{url_for('static', filename='img/инста.png')}}" alt="Instagram"></a>
+        <a href="#"><img src="{{url_for('static', filename='img/ватсап.png')}}" alt="WhatsApp"></a>
+        <a href="#"><img src="{{url_for('static', filename='img/телега.png')}}" alt="Telegram"></a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer__title">Навигация</div>
+      <nav class="links">
+        <a href="{{url_for('index')}}">Главная</a>
+        <a href="{{url_for('favorites')}}">Избранное</a>
+        <a href="{{url_for('profile')}}">Профиль</a>
+      </nav>
+    </div>
+
+    <div>
+      <div class="footer__title">О проекте</div>
+      <nav class="links">
+        <a href="{{url_for('faq')}}">FAQ</a>
+      </nav>
+    </div>
+  </footer>
+<script>
+  const user = {{ (current_user.to_dict() if current_user.is_authenticated else None) | tojson | safe }};
+</script>
+<script src="{{url_for('static', filename='profile.js')}}"></script>
+  <script src="{{url_for('static', filename='script.js')}}"></script>
+</body>
+</html>
