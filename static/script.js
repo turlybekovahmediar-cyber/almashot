@@ -37,12 +37,26 @@ const PLACES = [
   },
 
   {
+    id: "ParkPer",
+    name: "Парк Первого Президента",
+    category: "В городе",
+    cityGroup: "В городе",
+    desc: "Атмосферный парк",
+    img: "/static/first_pre/first1.png",
+    images: ["/static/first_pre/first1.png", "/static/first_pre/first2.png", "/static/first_pre/first3.png"],
+    address: "Пересечение улицы Новои и проспекта Аль-Фараби, Алматы",
+    hours: "Ежедневно: 05:00–23:00",
+    phone: "+7-700-000-00-02",
+    rating: 4.6
+  },
+
+  {
     id: "Fifty",
     name: "Fifty four",
     category: "Бизнес-центр",
     cityGroup: "В городе",
     desc: "Атмосфера спокойствия",
-    img: "/static/fifty/fifty1.PNG",
+    img: "/static/fifty/fifty2.PNG",
     images: ["/static/fifty/fifty1.PNG", "/static/fifty/fifty2.PNG"],
     address: "Маметова, 54, Алмалинский район, Алматы",
     hours: "Сегодня: 06:00-00:00",
@@ -70,8 +84,8 @@ const PLACES = [
     category: "Фотостудии",
     cityGroup: "В городе",
     desc: "Отличное место для съемок",
-    img: "/static/Prost/Prostranstvo5.PNG",
-    images: ["/static/Prost/Prostranstvo1.PNG", "/static/Prost/Prostranstvo2.PNG", "/static/Prost/Prostranstvo3.PNG", "/static/Prost/Prostranstvo4.PNG", "/static/Prost/Prostranstvo5.PNG" ],
+    img: "/static/Prost/Prostranstvo5.JPG",
+    images: ["/static/Prost/Prostranstvo1.PNG", "/static/Prost/Prostranstvo2.PNG", "/static/Prost/Prostranstvo3.JPG", "/static/Prost/Prostranstvo4.JPG", "/static/Prost/Prostranstvo5.JPG", "/static/Prost/Prostranstvo6.JPG", "/static/Prost/Prostranstvo7.JPG", "/static/Prost/Prostranstvo8.JPG", "/static/Prost/Prostranstvo9.JPG", "/static/Prost/Prostranstvo10.JPG", "/static/Prost/Prostranstvo11.JPG", "/static/Prost/Prostranstvo12.JPG", "/static/Prost/Prostranstvo13.JPG", "/static/Prost/Prostranstvo14.JPG", "/static/Prost/Prostranstvo15.JPG", "/static/Prost/Prostranstvo16.JPG", "/static/Prost/Prostranstvo17.JPG", "/static/Prost/Prostranstvo18.JPG", "/static/Prost/Prostranstvo19.JPG", "/static/Prost/Prostranstvo20.JPG", "/static/Prost/Prostranstvo21.JPG", "/static/Prost/Prostranstvo22.JPG" ],
     address: "Макатаева, 61, Алматы",
     hours: "10:00-22:00",
     phone: "+77089368979",
