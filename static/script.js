@@ -29,7 +29,7 @@ const PLACES = [
     cityGroup: "В городе",
     desc: "Атмосфера средневековья",
     img: "/static/KNU/Knu.PNG",
-    images: ["/static/KNU/Knu.PNG"],
+    images: ["/static/KNU/Knu.PNG", "/static/KNU/Knu1.PNG", "/static/KNU/Knu2.PNG"],
     address: "Пр. Назарбаева, 173, Алмалинский район, Алматы",
     hours: "Сегодня: 09:00-18:00",
     phone: "+7-727-355-0551",
@@ -172,7 +172,7 @@ const PLACES = [
     images: ["/static/img/PlatformA.jpg","/static/img/PlatformA1.jpg"],
     address: "Ул. Желтоксан, 148 (1–2 этаж), Алматы",
     hours: "Ежедневно: 09:00–24:00",
-    phone: "+7-701-***-**-**",
+    phone: "+7-701-428-83-17",
     rating: 4.5
   },
 
